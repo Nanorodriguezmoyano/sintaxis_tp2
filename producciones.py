@@ -2,7 +2,7 @@ from tokens import *
 
 P = {
     TCode:{
-        TOKEN_PR_PROGRAM: [[TOKEN_PR_PROGRAM,TOKEN_SP_PUNTO, Body]]
+        TOKEN_PR_PROGRAM: [TOKEN_PR_PROGRAM,TOKEN_SP_PUNTO, Body]
     },
     Body : {
         TOKEN_PR_VAR: [TOKEN_PR_VAR, DecVar ,DecVarList , TOKEN_PR_BEGIN,StatementList , TOKEN_PR_END ],
@@ -102,3 +102,4 @@ P = {
         TOKEN_OPERADOR_RELACIONAL:[TOKEN_OPERADOR_RELACIONAL]
     }
 }
+
