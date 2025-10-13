@@ -68,7 +68,6 @@ def parser_predictivo_por_tabla2(codigo_fuente):
         print("La cadena pertenece al lenguaje.")
     else:
         print("La cadena no pertenece al lenguaje.")
-
 # Nota importante: antes,en algunos casos el for sobre toda la lista causaba que el mismo token se procesara varias veces. Ahora, solo se consume un token a la vez, y la pila se actualiza correctamente.
 
 #str=[TOKEN_PR_PROGRAM, TOKEN_ID, TOKEN_SP_PUNTOCOMA, TOKEN_PR_VAR, DecVarList, TOKEN_PR_BEGIN, StatementList, TOKEN_PR_END, 'Eof']

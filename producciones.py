@@ -10,7 +10,7 @@ P = {
     },
     DecVarList : {
         TOKEN_ID: [DecVar, DecVarList],
-        TOKEN_PR_BEGIN: []  # fin
+        TOKEN_PR_BEGIN: [] 
     },
     DecVarList0:{
         TOKEN_ID: [DecVar, DecVarList],
@@ -40,7 +40,7 @@ P = {
         TOKEN_PR_IF: [Statement, StatementList],
         TOKEN_PR_GOTO: [Statement, StatementList],
         TOKEN_PR_LET: [Statement, StatementList],
-        TOKEN_PR_END: []  # fin
+        TOKEN_PR_END: [] 
     },
     StatementBody:{
         TOKEN_PR_IF:[Conditional],
