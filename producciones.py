@@ -8,9 +8,9 @@ P = {
         TOKEN_PR_VAR: [TOKEN_PR_VAR, DecVar ,DecVarList , TOKEN_PR_BEGIN,StatementList , TOKEN_PR_END ],
         TOKEN_PR_BEGIN: [TOKEN_PR_BEGIN, StatementList, TOKEN_PR_END]
     },
-    DecVarList:{
-        TOKEN_PR_BEGIN:[DecVarList],
-        TOKEN_ID:[DecVarList]  
+    DecVarList : {
+        TOKEN_ID: [DecVar, DecVarList],
+        TOKEN_PR_BEGIN: []  # fin
     },
     DecVarList0:{
         TOKEN_ID: [DecVar, DecVarList],
@@ -35,9 +35,12 @@ P = {
         TOKEN_PR_LET: [StatementBody],
         TOKEN_ID: [TOKEN_ID,TOKEN_SP_DOSPUNTOS,StatementBody]
     },
-    StatementList:{
-        TOKEN_ID: [StatementList0],
-        TOKEN_PR_END:[StatementList0]
+    StatementList :{
+        TOKEN_ID: [Statement, StatementList],
+        TOKEN_PR_IF: [Statement, StatementList],
+        TOKEN_PR_GOTO: [Statement, StatementList],
+        TOKEN_PR_LET: [Statement, StatementList],
+        TOKEN_PR_END: []  # fin
     },
     StatementBody:{
         TOKEN_PR_IF:[Conditional],
