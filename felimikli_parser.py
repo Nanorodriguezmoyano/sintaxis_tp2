@@ -37,6 +37,7 @@ def pni(no_terminal):
         procesar(cuerpo_produccion)
     else:
         print(f'Error, no hay regla para {datos_locales['lista_tokens'][datos_locales['index']]}, con {no_terminal}')
+        # datos_locales['error'] = True
 
 def desc_rec_proc(tokens):
     for token_lexema in tokens:
@@ -54,4 +55,5 @@ def desc_rec_proc(tokens):
     return True
 
 
-desc_rec_proc(tokenizer(cadena_valida_1))
+# desc_rec_proc(tokenizer(cadena_valida_1))
+desc_rec_proc(tokenizer(cadena_valida_2))

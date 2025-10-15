@@ -9,8 +9,8 @@ P = {
         TOKEN_PR_BEGIN: [TOKEN_PR_BEGIN, StatementList, TOKEN_PR_END]
     },
     DecVarList : {
-        TOKEN_ID: [DecVar, DecVarList],
-        TOKEN_PR_BEGIN: []
+        TOKEN_ID: [DecVarList0],
+        TOKEN_PR_BEGIN: [DecVarList0]
     },
     DecVarList0:{
         TOKEN_ID: [DecVar, DecVarList],
@@ -20,10 +20,11 @@ P = {
         TOKEN_ID:[TOKEN_ID, TOKEN_SP_DOSPUNTOS, DecVarBody]
     },
     DecVarBody:{
-        TOKEN_PR_INT:[TOKEN_PR_INT, TOKEN_SP_PARENTESIS_IZQ, TOKEN_NUM, TOKEN_SP_TRIPLEPUNTO, TOKEN_NUM, TOKEN_SP_PARENTESIS_DER, TOKEN_ASIGNACION, TOKEN_NUM, TOKEN_SP_PUNTOCOMA ]
+        TOKEN_PR_INT:[TOKEN_PR_INT, TOKEN_SP_PARENTESIS_IZQ, TOKEN_NUM, TOKEN_SP_TRIPLEPUNTO, TOKEN_NUM, TOKEN_SP_PARENTESIS_DER, TOKEN_ASIGNACION, TOKEN_NUM, TOKEN_SP_PUNTOCOMA ],
+        TOKEN_PR_BOOL:[Bool0, TOKEN_SP_PUNTOCOMA]
     },
     Bool0:{
-        TOKEN_PR_BOOL:[TOKEN_PR_BOOL, TOKEN_OPERADOR_RELACIONAL,C0]
+        TOKEN_PR_BOOL:[TOKEN_PR_BOOL, TOKEN_ASIGNACION, C0]
     } ,
     C0:{
         TOKEN_PR_TRUE:[TOKEN_PR_TRUE],
@@ -51,17 +52,22 @@ P = {
         TOKEN_PR_GOTO:[TOKEN_PR_GOTO,TOKEN_ID,TOKEN_SP_PUNTOCOMA]
     },
     Assignment:{
-        TOKEN_PR_LET:[Lvalue, TOKEN_ASIGNACION, Rbody, TOKEN_SP_PUNTOCOMA]
+        TOKEN_PR_LET:[TOKEN_PR_LET, Lvalue, TOKEN_ASIGNACION, Rbody, TOKEN_SP_PUNTOCOMA]
     },
     Rbody:{
-        TOKEN_PR_NOT:[TOKEN_PR_NOT,Rvalue]
+        TOKEN_PR_NOT:[TOKEN_PR_NOT,Rvalue],
+        TOKEN_ID:[Rvalue, B0],
+        TOKEN_NUM:[Rvalue, B0],
+        TOKEN_PR_TRUE:[Rvalue, B0],
+        TOKEN_PR_FALSE:[Rvalue, B0]
     },
     B0:{
-        TOKEN_PR_END:[],
-        TOKEN_PR_TRUE:[Rvalue, Op, Rvalue],
-        TOKEN_PR_FALSE:[Rvalue, Op, Rvalue],
-        TOKEN_NUM:[Rvalue, Op, Rvalue],
-        TOKEN_ID:[Rvalue, Op, Rvalue]
+        TOKEN_SP_PUNTOCOMA:[],
+        TOKEN_OM_MAS:[Op, Rvalue],
+        TOKEN_OM_GUION:[Op, Rvalue],
+        TOKEN_OM_ASTERISCO:[Op, Rvalue],
+        TOKEN_PR_AND:[Op, Rvalue],
+        TOKEN_PR_OR:[Op, Rvalue]
     },
     Op:{
         TOKEN_PR_AND:[BoolOp],
@@ -92,7 +98,10 @@ P = {
         TOKEN_PR_IF:[TOKEN_PR_IF, CompExpr, TOKEN_PR_GOTO, TOKEN_ID, TOKEN_SP_PUNTOCOMA, A0]
     },
     A0:{
-        TOKEN_PR_END:[],
+        TOKEN_ID:[],
+        TOKEN_PR_IF:[],
+        TOKEN_PR_LET:[],
+        TOKEN_PR_GOTO:[],
         TOKEN_PR_ELSE:[TOKEN_PR_ELSE, TOKEN_PR_GOTO, TOKEN_ID,TOKEN_SP_PUNTOCOMA]
     },
     CompExpr:{

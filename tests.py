@@ -47,5 +47,31 @@ cadena_valida_1 = '''
         if x < 10
             goto label;
         else goto id;
-        end
+    end
+'''
+
+cadena_valida_2 = '''
+    programa .
+    var
+    x : int(0...10) = 0;
+    y : bool = true;
+    z : int(-2...2) = -1;
+    begin
+        if x == 10 goto suma;
+
+        if x < 10 goto asigna;
+        else goto negacion;
+
+        asigna:
+        let v1 = x;
+        goto fin;
+
+        negacion:
+        let v2 = not y;
+        goto fin;
+
+        suma:
+        let v3 = x + z;
+    fin: let termino = 1;
+    end
 '''
