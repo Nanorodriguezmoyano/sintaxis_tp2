@@ -2,7 +2,7 @@ from tokens import *
 
 P = {
     TCode:{
-        TOKEN_PR_PROGRAM: [TOKEN_PR_PROGRAM,TOKEN_SP_PUNTO, Body]
+        TOKEN_PR_PROGRAMA: [TOKEN_PR_PROGRAMA,TOKEN_SP_PUNTO, Body]
     },
     Body : {
         TOKEN_PR_VAR: [TOKEN_PR_VAR, DecVar ,DecVarList , TOKEN_PR_BEGIN,StatementList , TOKEN_PR_END ],
@@ -10,7 +10,7 @@ P = {
     },
     DecVarList : {
         TOKEN_ID: [DecVar, DecVarList],
-        TOKEN_PR_BEGIN: [] 
+        TOKEN_PR_BEGIN: []
     },
     DecVarList0:{
         TOKEN_ID: [DecVar, DecVarList],
@@ -40,7 +40,7 @@ P = {
         TOKEN_PR_IF: [Statement, StatementList],
         TOKEN_PR_GOTO: [Statement, StatementList],
         TOKEN_PR_LET: [Statement, StatementList],
-        TOKEN_PR_END: [] 
+        TOKEN_PR_END: []
     },
     StatementBody:{
         TOKEN_PR_IF:[Conditional],
