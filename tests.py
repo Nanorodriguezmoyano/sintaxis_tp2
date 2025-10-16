@@ -1,57 +1,21 @@
-from tokens import *
-tokens_validos = [
-    TOKEN_PR_PROGRAMA, TOKEN_SP_PUNTO,               # programa .
-    TOKEN_PR_VAR,                                   # var
-    TOKEN_ID, TOKEN_SP_DOSPUNTOS,                   # x :
-    TOKEN_PR_INT, TOKEN_SP_PARENTESIS_IZQ, TOKEN_NUM, TOKEN_SP_TRIPLEPUNTO, TOKEN_NUM,
-    TOKEN_SP_PARENTESIS_DER, TOKEN_ASIGNACION, TOKEN_NUM, TOKEN_SP_PUNTOCOMA,  # int(0...10)=0;
-    TOKEN_PR_BEGIN,                                 # begin
-    TOKEN_PR_IF, TOKEN_ID, TOKEN_OPERADOR_RELACIONAL, TOKEN_NUM,               # if x < 10
-    TOKEN_PR_GOTO, TOKEN_ID, TOKEN_SP_PUNTOCOMA,                             # goto label;
-    TOKEN_PR_ELSE, TOKEN_PR_GOTO, TOKEN_ID, TOKEN_SP_PUNTOCOMA,              # else goto id;
-    TOKEN_PR_END,                                   # end
-    'Eof'
-]
-tokens_invalidos = [
-    TOKEN_PR_PROGRAMA, TOKEN_SP_PUNTO,             # programa .
-    TOKEN_PR_VAR,                                   # var
-    TOKEN_ID,                   # x :
-    TOKEN_PR_INT, TOKEN_SP_PARENTESIS_IZQ, TOKEN_NUM, TOKEN_SP_TRIPLEPUNTO, TOKEN_NUM,
-    TOKEN_SP_PARENTESIS_DER, TOKEN_ASIGNACION, TOKEN_NUM, TOKEN_SP_PUNTOCOMA,  # int(0...10)=0;
-    TOKEN_PR_BEGIN,                                 # begin
-    TOKEN_PR_IF, TOKEN_ID, TOKEN_OPERADOR_RELACIONAL, TOKEN_NUM,               # if x < 10
-    TOKEN_PR_GOTO, TOKEN_ID, TOKEN_SP_PUNTOCOMA,                             # goto label;
-    TOKEN_PR_ELSE, TOKEN_PR_GOTO, TOKEN_ID, TOKEN_SP_PUNTOCOMA,              # else goto end;
-    TOKEN_PR_END,                                   # end
-    'Eof'
-]
+from parser import parser
+from lexer import tokenizer
 
-tokens_invalidos2 = [
-    TOKEN_SP_PUNTO,         # program .
-                                 # var
-    TOKEN_ID, TOKEN_SP_DOSPUNTOS,                   # x :
-    TOKEN_PR_INT, TOKEN_SP_PARENTESIS_IZQ, TOKEN_NUM, TOKEN_SP_TRIPLEPUNTO, TOKEN_NUM,
-    TOKEN_SP_PARENTESIS_DER, TOKEN_ASIGNACION, TOKEN_NUM, TOKEN_SP_PUNTOCOMA,  # int(0...10)=0;
-    TOKEN_PR_BEGIN,                                 # begin
-    TOKEN_PR_IF, TOKEN_ID, TOKEN_OPERADOR_RELACIONAL, TOKEN_NUM,               # if x < 10
-    TOKEN_PR_GOTO, TOKEN_ID, TOKEN_SP_PUNTOCOMA,                             # goto label;
-    TOKEN_PR_ELSE, TOKEN_PR_GOTO, TOKEN_ID, TOKEN_SP_PUNTOCOMA,              # else goto end;
-    TOKEN_PR_END,                                   # end
-    'Eof'
-]
-
-cadena_valida_1 = '''
-    programa .
+tests = [
+# test_1 
+'''
+    program .
     var x : int(0...10) = 0;
     begin
         if x < 10
             goto label;
         else goto id;
     end
-'''
+''',
 
-cadena_valida_2 = '''
-    programa .
+# test_2 
+'''
+    program .
     var
     x : int(0...10) = 0;
     y : bool = true;
@@ -74,4 +38,50 @@ cadena_valida_2 = '''
         let v3 = x + z;
     fin: let termino = 1;
     end
+''',
+
+# test_3 
 '''
+    program .
+    begin
+    end
+
+''',
+# test_4 
+'''
+''',
+# test_5 
+'''
+''',
+# test_6 
+'''
+''',
+# test_7 
+'''
+''',
+# test_8 
+'''
+''',
+# test_9 
+'''
+''',
+# test_10 
+'''
+'''
+]
+
+f = open("output.txt", "w")
+for i in range(len(tests)):
+        tkns = tokenizer(tests[i])
+        print("", file=f)
+        print(f'=========== TEST N:{i + 1} =========', file=f)
+        print(tests[i], file=f)
+        print("", file=f)
+        print(f'----TOKENIZER----', file=f)
+        print(tkns, file=f)
+        print("", file=f)
+        print(f'----PARSER----', file=f)
+        comentarios, derivaciones = parser(tkns)
+        print(comentarios, file=f)
+        print("", file=f)
+        print(derivaciones, file=f)

@@ -1,6 +1,6 @@
 ESTADO_FINAL = "ESTADO FINAL"
 ESTADO_NO_FINAL = "ESTADO NO FINAL"
-ESTADO_TRAMPA = "ESTADO TRAMPA" 
+ESTADO_TRAMPA = "ESTADO TRAMPA"
 
 LETRAS_MIN = set("abcdefghijklmnopqrstuvwxyz")
 LETRAS_MAY = set("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -180,7 +180,7 @@ def afd_asignacion(lexema):
         return afd_palabra(lexema, "=")
 
 def afd_pr_programa(lexema):
-        return afd_palabra(lexema, "programa")
+        return afd_palabra(lexema, "program")
 
 def afd_pr_var(lexema):
         return afd_palabra(lexema, "var")
