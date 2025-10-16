@@ -3,8 +3,6 @@ from producciones import *
 VT=[TOKEN_OPERADOR_RELACIONAL,TOKEN_PR_PROGRAMA,TOKEN_PR_VAR,TOKEN_PR_BEGIN,TOKEN_PR_END, TOKEN_PR_IF,TOKEN_PR_ELSE,TOKEN_PR_INT,TOKEN_PR_BOOL,TOKEN_PR_TRUE,TOKEN_PR_FALSE,TOKEN_PR_NOT,TOKEN_PR_AND,TOKEN_PR_OR,TOKEN_PR_GOTO,TOKEN_PR_LET,TOKEN_ASIGNACION,TOKEN_OM_MAS, TOKEN_OM_GUION, TOKEN_OM_ASTERISCO, TOKEN_SP_PUNTO,TOKEN_SP_COMA,TOKEN_SP_DOSPUNTOS, TOKEN_SP_PUNTOCOMA,TOKEN_SP_PARENTESIS_IZQ,TOKEN_SP_PARENTESIS_DER,TOKEN_SP_TRIPLEPUNTO,TOKEN_NUM,TOKEN_ID,EoF]
 VN=[TCode, Body, DecVarList,DecVar,DecVarBody,Statement,StatementList,StatementBody,Goto,Assignment,Op,MatOp,BoolOp,Lvalue,Rvalue,Conditional,CompExpr,CompOp,DecVarList0,StatementList0,Rbody,A0,B0,C0,Bool0]
 
-
-
 def parser(tokens):
     def procesar(cuerpo_produccion):
         for simbolo in cuerpo_produccion:
@@ -54,4 +52,6 @@ def parser(tokens):
     else:
         datos_locales['comentarios'].append('La cadena pertenece al lenguaje')
 
-    return datos_locales['comentarios'], datos_locales['derivaciones']
+    cadena_valida = not datos_locales['error']
+
+    return cadena_valida, datos_locales['comentarios'], datos_locales['derivaciones']

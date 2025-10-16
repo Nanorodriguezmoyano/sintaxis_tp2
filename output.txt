@@ -14,9 +14,27 @@
 [('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_VAR', 'var'), ('TOKEN_ID', 'x'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_INT', 'int'), ('TOKEN_SP_PARENTESIS_IZQ', '('), ('TOKEN_NUM', '0'), ('TOKEN_SP_TRIPLEPUNTO', '...'), ('TOKEN_NUM', '10'), ('TOKEN_SP_PARENTESIS_DER', ')'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '0'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_IF', 'if'), ('TOKEN_ID', 'x'), ('TOKEN_OPERADOR_RELACIONAL', '<'), ('TOKEN_NUM', '10'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'label'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_ELSE', 'else'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'id'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['La cadena pertenece al lenguaje']
 
-[{'TCode': ['TOKEN_PR_PROGRAMA', 'TOKEN_SP_PUNTO', 'Body']}, {'Body': ['TOKEN_PR_VAR', 'DecVar', 'DecVarList', 'TOKEN_PR_BEGIN', 'StatementList', 'TOKEN_PR_END']}, {'DecVar': ['TOKEN_ID', 'TOKEN_SP_DOSPUNTOS', 'DecVarBody']}, {'DecVarBody': ['TOKEN_PR_INT', 'TOKEN_SP_PARENTESIS_IZQ', 'TOKEN_NUM', 'TOKEN_SP_TRIPLEPUNTO', 'TOKEN_NUM', 'TOKEN_SP_PARENTESIS_DER', 'TOKEN_ASIGNACION', 'TOKEN_NUM', 'TOKEN_SP_PUNTOCOMA']}, {'DecVarList': ['DecVarList0']}, {'DecVarList0': []}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['StatementBody']}, {'StatementBody': ['Conditional']}, {'Conditional': ['TOKEN_PR_IF', 'CompExpr', 'TOKEN_PR_GOTO', 'TOKEN_ID', 'TOKEN_SP_PUNTOCOMA', 'A0']}, {'CompExpr': ['Rvalue', 'CompOp', 'Rvalue']}, {'Rvalue': ['TOKEN_ID']}, {'CompOp': ['TOKEN_OPERADOR_RELACIONAL']}, {'Rvalue': ['TOKEN_NUM']}, {'A0': ['TOKEN_PR_ELSE', 'TOKEN_PR_GOTO', 'TOKEN_ID', 'TOKEN_SP_PUNTOCOMA']}, {'StatementList': []}]
+La cadena pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_VAR DecVar DecVarList TOKEN_PR_BEGIN StatementList TOKEN_PR_END
+DecVar -> TOKEN_ID TOKEN_SP_DOSPUNTOS DecVarBody
+DecVarBody -> TOKEN_PR_INT TOKEN_SP_PARENTESIS_IZQ TOKEN_NUM TOKEN_SP_TRIPLEPUNTO TOKEN_NUM TOKEN_SP_PARENTESIS_DER TOKEN_ASIGNACION TOKEN_NUM TOKEN_SP_PUNTOCOMA
+DecVarList -> DecVarList0
+DecVarList0 -> 
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Conditional
+Conditional -> TOKEN_PR_IF CompExpr TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA A0
+CompExpr -> Rvalue CompOp Rvalue
+Rvalue -> TOKEN_ID
+CompOp -> TOKEN_OPERADOR_RELACIONAL
+Rvalue -> TOKEN_NUM
+A0 -> TOKEN_PR_ELSE TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
+StatementList -> 
 
 =========== TEST N:2 =========
 
@@ -49,9 +67,88 @@
 [('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_VAR', 'var'), ('TOKEN_ID', 'x'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_INT', 'int'), ('TOKEN_SP_PARENTESIS_IZQ', '('), ('TOKEN_NUM', '0'), ('TOKEN_SP_TRIPLEPUNTO', '...'), ('TOKEN_NUM', '10'), ('TOKEN_SP_PARENTESIS_DER', ')'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '0'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'y'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_BOOL', 'bool'), ('TOKEN_ASIGNACION', '='), ('TOKEN_PR_TRUE', 'true'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'z'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_INT', 'int'), ('TOKEN_SP_PARENTESIS_IZQ', '('), ('TOKEN_NUM', '-2'), ('TOKEN_SP_TRIPLEPUNTO', '...'), ('TOKEN_NUM', '2'), ('TOKEN_SP_PARENTESIS_DER', ')'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '-1'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_IF', 'if'), ('TOKEN_ID', 'x'), ('TOKEN_OPERADOR_RELACIONAL', '=='), ('TOKEN_NUM', '10'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'suma'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_IF', 'if'), ('TOKEN_ID', 'x'), ('TOKEN_OPERADOR_RELACIONAL', '<'), ('TOKEN_NUM', '10'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'asigna'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_ELSE', 'else'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'negacion'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'asigna'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'v1'), ('TOKEN_ASIGNACION', '='), ('TOKEN_ID', 'x'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'fin'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'negacion'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'v2'), ('TOKEN_ASIGNACION', '='), ('TOKEN_PR_NOT', 'not'), ('TOKEN_ID', 'y'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'fin'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'suma'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'v3'), ('TOKEN_ASIGNACION', '='), ('TOKEN_ID', 'x'), ('TOKEN_OM_MAS', '+'), ('TOKEN_ID', 'z'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'fin'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'termino'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '1'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['La cadena pertenece al lenguaje']
 
-[{'TCode': ['TOKEN_PR_PROGRAMA', 'TOKEN_SP_PUNTO', 'Body']}, {'Body': ['TOKEN_PR_VAR', 'DecVar', 'DecVarList', 'TOKEN_PR_BEGIN', 'StatementList', 'TOKEN_PR_END']}, {'DecVar': ['TOKEN_ID', 'TOKEN_SP_DOSPUNTOS', 'DecVarBody']}, {'DecVarBody': ['TOKEN_PR_INT', 'TOKEN_SP_PARENTESIS_IZQ', 'TOKEN_NUM', 'TOKEN_SP_TRIPLEPUNTO', 'TOKEN_NUM', 'TOKEN_SP_PARENTESIS_DER', 'TOKEN_ASIGNACION', 'TOKEN_NUM', 'TOKEN_SP_PUNTOCOMA']}, {'DecVarList': ['DecVarList0']}, {'DecVarList0': ['DecVar', 'DecVarList']}, {'DecVar': ['TOKEN_ID', 'TOKEN_SP_DOSPUNTOS', 'DecVarBody']}, {'DecVarBody': ['Bool0', 'TOKEN_SP_PUNTOCOMA']}, {'Bool0': ['TOKEN_PR_BOOL', 'TOKEN_ASIGNACION', 'C0']}, {'C0': ['TOKEN_PR_TRUE']}, {'DecVarList': ['DecVarList0']}, {'DecVarList0': ['DecVar', 'DecVarList']}, {'DecVar': ['TOKEN_ID', 'TOKEN_SP_DOSPUNTOS', 'DecVarBody']}, {'DecVarBody': ['TOKEN_PR_INT', 'TOKEN_SP_PARENTESIS_IZQ', 'TOKEN_NUM', 'TOKEN_SP_TRIPLEPUNTO', 'TOKEN_NUM', 'TOKEN_SP_PARENTESIS_DER', 'TOKEN_ASIGNACION', 'TOKEN_NUM', 'TOKEN_SP_PUNTOCOMA']}, {'DecVarList': ['DecVarList0']}, {'DecVarList0': []}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['StatementBody']}, {'StatementBody': ['Conditional']}, {'Conditional': ['TOKEN_PR_IF', 'CompExpr', 'TOKEN_PR_GOTO', 'TOKEN_ID', 'TOKEN_SP_PUNTOCOMA', 'A0']}, {'CompExpr': ['Rvalue', 'CompOp', 'Rvalue']}, {'Rvalue': ['TOKEN_ID']}, {'CompOp': ['TOKEN_OPERADOR_RELACIONAL']}, {'Rvalue': ['TOKEN_NUM']}, {'A0': []}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['StatementBody']}, {'StatementBody': ['Conditional']}, {'Conditional': ['TOKEN_PR_IF', 'CompExpr', 'TOKEN_PR_GOTO', 'TOKEN_ID', 'TOKEN_SP_PUNTOCOMA', 'A0']}, {'CompExpr': ['Rvalue', 'CompOp', 'Rvalue']}, {'Rvalue': ['TOKEN_ID']}, {'CompOp': ['TOKEN_OPERADOR_RELACIONAL']}, {'Rvalue': ['TOKEN_NUM']}, {'A0': ['TOKEN_PR_ELSE', 'TOKEN_PR_GOTO', 'TOKEN_ID', 'TOKEN_SP_PUNTOCOMA']}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['TOKEN_ID', 'TOKEN_SP_DOSPUNTOS', 'StatementBody']}, {'StatementBody': ['Assignment']}, {'Assignment': ['TOKEN_PR_LET', 'Lvalue', 'TOKEN_ASIGNACION', 'Rbody', 'TOKEN_SP_PUNTOCOMA']}, {'Lvalue': ['TOKEN_ID']}, {'Rbody': ['Rvalue', 'B0']}, {'Rvalue': ['TOKEN_ID']}, {'B0': []}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['StatementBody']}, {'StatementBody': ['Goto']}, {'Goto': ['TOKEN_PR_GOTO', 'TOKEN_ID', 'TOKEN_SP_PUNTOCOMA']}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['TOKEN_ID', 'TOKEN_SP_DOSPUNTOS', 'StatementBody']}, {'StatementBody': ['Assignment']}, {'Assignment': ['TOKEN_PR_LET', 'Lvalue', 'TOKEN_ASIGNACION', 'Rbody', 'TOKEN_SP_PUNTOCOMA']}, {'Lvalue': ['TOKEN_ID']}, {'Rbody': ['TOKEN_PR_NOT', 'Rvalue']}, {'Rvalue': ['TOKEN_ID']}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['StatementBody']}, {'StatementBody': ['Goto']}, {'Goto': ['TOKEN_PR_GOTO', 'TOKEN_ID', 'TOKEN_SP_PUNTOCOMA']}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['TOKEN_ID', 'TOKEN_SP_DOSPUNTOS', 'StatementBody']}, {'StatementBody': ['Assignment']}, {'Assignment': ['TOKEN_PR_LET', 'Lvalue', 'TOKEN_ASIGNACION', 'Rbody', 'TOKEN_SP_PUNTOCOMA']}, {'Lvalue': ['TOKEN_ID']}, {'Rbody': ['Rvalue', 'B0']}, {'Rvalue': ['TOKEN_ID']}, {'B0': ['Op', 'Rvalue']}, {'Op': ['MatOp']}, {'MatOp': ['TOKEN_OM_MAS']}, {'Rvalue': ['TOKEN_ID']}, {'StatementList': ['Statement', 'StatementList']}, {'Statement': ['TOKEN_ID', 'TOKEN_SP_DOSPUNTOS', 'StatementBody']}, {'StatementBody': ['Assignment']}, {'Assignment': ['TOKEN_PR_LET', 'Lvalue', 'TOKEN_ASIGNACION', 'Rbody', 'TOKEN_SP_PUNTOCOMA']}, {'Lvalue': ['TOKEN_ID']}, {'Rbody': ['Rvalue', 'B0']}, {'Rvalue': ['TOKEN_NUM']}, {'B0': []}, {'StatementList': []}]
+La cadena pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_VAR DecVar DecVarList TOKEN_PR_BEGIN StatementList TOKEN_PR_END
+DecVar -> TOKEN_ID TOKEN_SP_DOSPUNTOS DecVarBody
+DecVarBody -> TOKEN_PR_INT TOKEN_SP_PARENTESIS_IZQ TOKEN_NUM TOKEN_SP_TRIPLEPUNTO TOKEN_NUM TOKEN_SP_PARENTESIS_DER TOKEN_ASIGNACION TOKEN_NUM TOKEN_SP_PUNTOCOMA
+DecVarList -> DecVarList0
+DecVarList0 -> DecVar DecVarList
+DecVar -> TOKEN_ID TOKEN_SP_DOSPUNTOS DecVarBody
+DecVarBody -> Bool0 TOKEN_SP_PUNTOCOMA
+Bool0 -> TOKEN_PR_BOOL TOKEN_ASIGNACION C0
+C0 -> TOKEN_PR_TRUE
+DecVarList -> DecVarList0
+DecVarList0 -> DecVar DecVarList
+DecVar -> TOKEN_ID TOKEN_SP_DOSPUNTOS DecVarBody
+DecVarBody -> TOKEN_PR_INT TOKEN_SP_PARENTESIS_IZQ TOKEN_NUM TOKEN_SP_TRIPLEPUNTO TOKEN_NUM TOKEN_SP_PARENTESIS_DER TOKEN_ASIGNACION TOKEN_NUM TOKEN_SP_PUNTOCOMA
+DecVarList -> DecVarList0
+DecVarList0 -> 
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Conditional
+Conditional -> TOKEN_PR_IF CompExpr TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA A0
+CompExpr -> Rvalue CompOp Rvalue
+Rvalue -> TOKEN_ID
+CompOp -> TOKEN_OPERADOR_RELACIONAL
+Rvalue -> TOKEN_NUM
+A0 -> 
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Conditional
+Conditional -> TOKEN_PR_IF CompExpr TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA A0
+CompExpr -> Rvalue CompOp Rvalue
+Rvalue -> TOKEN_ID
+CompOp -> TOKEN_OPERADOR_RELACIONAL
+Rvalue -> TOKEN_NUM
+A0 -> TOKEN_PR_ELSE TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_ID
+B0 -> 
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Goto
+Goto -> TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> TOKEN_PR_NOT Rvalue
+Rvalue -> TOKEN_ID
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Goto
+Goto -> TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_ID
+B0 -> Op Rvalue
+Op -> MatOp
+MatOp -> TOKEN_OM_MAS
+Rvalue -> TOKEN_ID
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_NUM
+B0 -> 
+StatementList -> 
 
 =========== TEST N:3 =========
 
@@ -65,81 +162,252 @@
 [('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['La cadena pertenece al lenguaje']
 
-[{'TCode': ['TOKEN_PR_PROGRAMA', 'TOKEN_SP_PUNTO', 'Body']}, {'Body': ['TOKEN_PR_BEGIN', 'StatementList', 'TOKEN_PR_END']}, {'StatementList': []}]
+La cadena pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_BEGIN StatementList TOKEN_PR_END
+StatementList -> 
 
 =========== TEST N:4 =========
 
+    program .
+    begin
+    let v = 1;
+    end
 
 
 ----TOKENIZER----
-[]
+[('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'v'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '1'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['Error, no hay regla para EoF, con TCode', 'La cadena no pertenece al lenguaje']
 
-[]
+La cadena pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_BEGIN StatementList TOKEN_PR_END
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_NUM
+B0 -> 
+StatementList -> 
 
 =========== TEST N:5 =========
 
+    program .
+    var
+    begin
+    if x > 10 goto bb; else goto dd;
+    end
 
 
 ----TOKENIZER----
-[]
+[('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_VAR', 'var'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_IF', 'if'), ('TOKEN_ID', 'x'), ('TOKEN_OPERADOR_RELACIONAL', '>'), ('TOKEN_NUM', '10'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'bb'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_ELSE', 'else'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'dd'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['Error, no hay regla para EoF, con TCode', 'La cadena no pertenece al lenguaje']
 
-[]
+Error, no hay regla para TOKEN_PR_BEGIN, con DecVar
+La cadena no pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_VAR DecVar DecVarList TOKEN_PR_BEGIN StatementList TOKEN_PR_END
 
 =========== TEST N:6 =========
 
+    program .
+    var
+    x : int(0...10) = 0;
+    begin
+    if x > 10 goto bb; else goto dd;
+    else goto sigma;
+    end
 
 
 ----TOKENIZER----
-[]
+[('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_VAR', 'var'), ('TOKEN_ID', 'x'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_INT', 'int'), ('TOKEN_SP_PARENTESIS_IZQ', '('), ('TOKEN_NUM', '0'), ('TOKEN_SP_TRIPLEPUNTO', '...'), ('TOKEN_NUM', '10'), ('TOKEN_SP_PARENTESIS_DER', ')'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '0'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_IF', 'if'), ('TOKEN_ID', 'x'), ('TOKEN_OPERADOR_RELACIONAL', '>'), ('TOKEN_NUM', '10'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'bb'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_ELSE', 'else'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'dd'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_ELSE', 'else'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'sigma'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['Error, no hay regla para EoF, con TCode', 'La cadena no pertenece al lenguaje']
 
-[]
+Error, no hay regla para TOKEN_PR_ELSE, con StatementList
+La cadena no pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_VAR DecVar DecVarList TOKEN_PR_BEGIN StatementList TOKEN_PR_END
+DecVar -> TOKEN_ID TOKEN_SP_DOSPUNTOS DecVarBody
+DecVarBody -> TOKEN_PR_INT TOKEN_SP_PARENTESIS_IZQ TOKEN_NUM TOKEN_SP_TRIPLEPUNTO TOKEN_NUM TOKEN_SP_PARENTESIS_DER TOKEN_ASIGNACION TOKEN_NUM TOKEN_SP_PUNTOCOMA
+DecVarList -> DecVarList0
+DecVarList0 -> 
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Conditional
+Conditional -> TOKEN_PR_IF CompExpr TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA A0
+CompExpr -> Rvalue CompOp Rvalue
+Rvalue -> TOKEN_ID
+CompOp -> TOKEN_OPERADOR_RELACIONAL
+Rvalue -> TOKEN_NUM
+A0 -> TOKEN_PR_ELSE TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
 
 =========== TEST N:7 =========
 
+    program.
+    begin
+    goto b;
+    b;
+    end
 
 
 ----TOKENIZER----
-[]
+[('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'b'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'b'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['Error, no hay regla para EoF, con TCode', 'La cadena no pertenece al lenguaje']
 
-[]
+Error, se esperaba TOKEN_SP_DOSPUNTOS, y se encontro, TOKEN_SP_PUNTOCOMA
+La cadena no pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_BEGIN StatementList TOKEN_PR_END
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Goto
+Goto -> TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
 
 =========== TEST N:8 =========
 
+    program .
+    var
+    lambda : int(0...2) = 1;
+    begin
+    goto b;
+    let lambda = 0;
+    b: let lambda = 2;
+    if lambda == 2 goto sigma;
+    else goto beta;
+    beta: let gotoFunciona = True;
+    goto fin;
+    sigma: let gotoFunciona = True;
+    fin: let a = 0;
+    end
 
 
 ----TOKENIZER----
-[]
+[('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_VAR', 'var'), ('TOKEN_ID', 'lambda'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_INT', 'int'), ('TOKEN_SP_PARENTESIS_IZQ', '('), ('TOKEN_NUM', '0'), ('TOKEN_SP_TRIPLEPUNTO', '...'), ('TOKEN_NUM', '2'), ('TOKEN_SP_PARENTESIS_DER', ')'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '1'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'b'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'lambda'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '0'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'b'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'lambda'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '2'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_IF', 'if'), ('TOKEN_ID', 'lambda'), ('TOKEN_OPERADOR_RELACIONAL', '=='), ('TOKEN_NUM', '2'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'sigma'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_ELSE', 'else'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'beta'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'beta'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'gotoFunciona'), ('TOKEN_ASIGNACION', '='), ('TOKEN_ID', 'True'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'fin'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'sigma'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'gotoFunciona'), ('TOKEN_ASIGNACION', '='), ('TOKEN_ID', 'True'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'fin'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'a'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '0'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['Error, no hay regla para EoF, con TCode', 'La cadena no pertenece al lenguaje']
 
-[]
+La cadena pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_VAR DecVar DecVarList TOKEN_PR_BEGIN StatementList TOKEN_PR_END
+DecVar -> TOKEN_ID TOKEN_SP_DOSPUNTOS DecVarBody
+DecVarBody -> TOKEN_PR_INT TOKEN_SP_PARENTESIS_IZQ TOKEN_NUM TOKEN_SP_TRIPLEPUNTO TOKEN_NUM TOKEN_SP_PARENTESIS_DER TOKEN_ASIGNACION TOKEN_NUM TOKEN_SP_PUNTOCOMA
+DecVarList -> DecVarList0
+DecVarList0 -> 
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Goto
+Goto -> TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_NUM
+B0 -> 
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_NUM
+B0 -> 
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Conditional
+Conditional -> TOKEN_PR_IF CompExpr TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA A0
+CompExpr -> Rvalue CompOp Rvalue
+Rvalue -> TOKEN_ID
+CompOp -> TOKEN_OPERADOR_RELACIONAL
+Rvalue -> TOKEN_NUM
+A0 -> TOKEN_PR_ELSE TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_ID
+B0 -> 
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Goto
+Goto -> TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_ID
+B0 -> 
+StatementList -> Statement StatementList
+Statement -> TOKEN_ID TOKEN_SP_DOSPUNTOS StatementBody
+StatementBody -> Assignment
+Assignment -> TOKEN_PR_LET Lvalue TOKEN_ASIGNACION Rbody TOKEN_SP_PUNTOCOMA
+Lvalue -> TOKEN_ID
+Rbody -> Rvalue B0
+Rvalue -> TOKEN_NUM
+B0 -> 
+StatementList -> 
 
 =========== TEST N:9 =========
 
+    program .
+    begin
+    if x = 10 goto alfa; else goto beta
+    alfa: let y = True;
+    beta: let z = False;
+    end
+
 
 
 ----TOKENIZER----
-[]
+[('TOKEN_PR_PROGRAMA', 'program'), ('TOKEN_SP_PUNTO', '.'), ('TOKEN_PR_BEGIN', 'begin'), ('TOKEN_PR_IF', 'if'), ('TOKEN_ID', 'x'), ('TOKEN_ASIGNACION', '='), ('TOKEN_NUM', '10'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'alfa'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_ELSE', 'else'), ('TOKEN_PR_GOTO', 'goto'), ('TOKEN_ID', 'beta'), ('TOKEN_ID', 'alfa'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'y'), ('TOKEN_ASIGNACION', '='), ('TOKEN_ID', 'True'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_ID', 'beta'), ('TOKEN_SP_DOSPUNTOS', ':'), ('TOKEN_PR_LET', 'let'), ('TOKEN_ID', 'z'), ('TOKEN_ASIGNACION', '='), ('TOKEN_ID', 'False'), ('TOKEN_SP_PUNTOCOMA', ';'), ('TOKEN_PR_END', 'end')]
 
 ----PARSER----
-['Error, no hay regla para EoF, con TCode', 'La cadena no pertenece al lenguaje']
 
-[]
+Error, no hay regla para TOKEN_ASIGNACION, con CompOp
+La cadena no pertenece al lenguaje
+
+DERIVACIONES
+
+TCode -> TOKEN_PR_PROGRAMA TOKEN_SP_PUNTO Body
+Body -> TOKEN_PR_BEGIN StatementList TOKEN_PR_END
+StatementList -> Statement StatementList
+Statement -> StatementBody
+StatementBody -> Conditional
+Conditional -> TOKEN_PR_IF CompExpr TOKEN_PR_GOTO TOKEN_ID TOKEN_SP_PUNTOCOMA A0
+CompExpr -> Rvalue CompOp Rvalue
+Rvalue -> TOKEN_ID
 
 =========== TEST N:10 =========
 
@@ -149,6 +417,9 @@
 []
 
 ----PARSER----
-['Error, no hay regla para EoF, con TCode', 'La cadena no pertenece al lenguaje']
 
-[]
+Error, no hay regla para EoF, con TCode
+La cadena no pertenece al lenguaje
+
+DERIVACIONES
+

@@ -49,21 +49,63 @@ tests = [
 ''',
 # test_4 
 '''
+    program .
+    begin
+    let v = 1;
+    end
 ''',
 # test_5 
 '''
+    program .
+    var
+    begin
+    if x > 10 goto bb; else goto dd;
+    end
 ''',
 # test_6 
 '''
+    program .
+    var
+    x : int(0...10) = 0;
+    begin
+    if x > 10 goto bb; else goto dd;
+    else goto sigma;
+    end
 ''',
 # test_7 
 '''
+    program.
+    begin
+    goto b;
+    b;
+    end
 ''',
 # test_8 
 '''
+    program .
+    var
+    lambda : int(0...2) = 1;
+    begin
+    goto b;
+    let lambda = 0;
+    b: let lambda = 2;
+    if lambda == 2 goto sigma;
+    else goto beta;
+    beta: let gotoFunciona = True;
+    goto fin;
+    sigma: let gotoFunciona = True;
+    fin: let a = 0;
+    end
 ''',
 # test_9 
 '''
+    program .
+    begin
+    if x = 10 goto alfa; else goto beta
+    alfa: let y = True;
+    beta: let z = False;
+    end
+
 ''',
 # test_10 
 '''
@@ -81,7 +123,13 @@ for i in range(len(tests)):
         print(tkns, file=f)
         print("", file=f)
         print(f'----PARSER----', file=f)
-        comentarios, derivaciones = parser(tkns)
-        print(comentarios, file=f)
+        valid, comentarios, derivaciones = parser(tkns)
+
         print("", file=f)
-        print(derivaciones, file=f)
+        for s in comentarios:
+                print(s, file=f)
+        print("", file=f)
+        print(f'DERIVACIONES', file=f)
+        print("", file=f)
+        for der in derivaciones:
+                print(f'{list(der.keys())[0]} -> {' '.join(map(str, list(der.values())[0]))}', file=f)
